@@ -5,10 +5,13 @@
 }
 
 .hw {
-
+    display: flex;
+    flex-direction: column;
 }
 
+
 .hwTitle {
+    padding: 10px;
     font-family: Montserrat, sans-serif;
     font-size: 22px;
     font-weight: 600;
