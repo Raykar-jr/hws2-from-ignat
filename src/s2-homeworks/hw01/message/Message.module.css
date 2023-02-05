@@ -43,6 +43,7 @@
 }
 
 .messageText {
+    position: relative;
     padding: 5px;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
@@ -50,6 +51,16 @@
     font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
+}
+.messageText::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    right: -17px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(40px at top right, transparent 50%, #0066CC 0) no-repeat right bottom;
 }
 
 .time {

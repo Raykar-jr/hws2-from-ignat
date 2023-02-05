@@ -18,6 +18,7 @@
 }
 
 .friendText {
+    position: relative;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
@@ -28,7 +29,14 @@
 }
 
 .friendText:after {
-
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    right: 98%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(40px at top left, transparent 50%, #0066CC 0) no-repeat right bottom;
 }
 
 .friendName {
