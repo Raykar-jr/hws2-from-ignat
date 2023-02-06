@@ -14,22 +14,51 @@
 }
 
 .errorInput {
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    height: 36px;
+    color: red;
 }
 
 .button {
+    width: 78px;
+    height: 36px;
+    padding: 5px 24px;
+    background: #0066CC;
+    opacity: 0.5;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
 }
 
 .button:focus {
 }
 
 .button:active {
+    opacity: 1.0;
 }
 
 .button:disabled {
 }
 
 .text {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .greeting {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
 }
