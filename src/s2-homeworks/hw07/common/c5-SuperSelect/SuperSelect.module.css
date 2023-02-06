@@ -1,9 +1,24 @@
 .select {
+    padding: 5px 50px 5px 5px;
+    background-color: #b05dea;
+    color: rgb(4, 4, 245);
+    cursor: pointer;
+}
+
+.option {
+    color: rgb(4, 4, 245);
+    background-color: #b05dea;
+}
+.option:checked {
+    color: rgb(20, 20, 232);
+    background-color: rgba(224, 174, 245, 0.93);
 }
 
 .select:focus {
 }
 
 
+
 .option:hover {
+
 }

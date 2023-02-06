@@ -1,15 +1,41 @@
 .radio {
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    background: #be95ee;
 }
 
 .radio::before {
 }
 
+.radio:hover {
+    border: 2px solid rgb(4, 4, 245)
+}
 
 .radio:checked::before {
 }
 
+.radio:focus {
+    border: 2px solid #171715;
+}
+.radio:checked {
+    background: #4365ef;
+}
 .label {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
 }
 
 .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
