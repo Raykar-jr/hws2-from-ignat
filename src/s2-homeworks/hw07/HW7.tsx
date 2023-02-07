@@ -18,7 +18,6 @@ const arr = [
 ] // value может быть изменено
 
 const HW7 = () => {
-    debugger
     const [value, onChangeOption] = useState<number>(1) // селект и радио должны работать синхронно
 
     return (
