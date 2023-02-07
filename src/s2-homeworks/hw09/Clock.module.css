@@ -3,14 +3,31 @@
     gap: 21px;
 }
 
+
 .clock {
 }
 
 .watch {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+
 }
 
 .watch strong {
 }
 
 .more {
+    margin: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: rgba(0, 0, 0, 0.5);
 }

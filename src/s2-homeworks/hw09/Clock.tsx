@@ -8,9 +8,11 @@ function Clock() {
     // for autotests // не менять // можно подсунуть в локалСторэдж нужную дату, чтоб увидеть как она отображается
     const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
     const [show, setShow] = useState<boolean>(false)
+    const [countIsStarted, setCountIsStarted] = useState<boolean>(false)
 
     const start = () => {
         stop()
+        setCountIsStarted(true)
         const id: number = window.setInterval(() => {
             setDate(new Date())
         }, 1000)
@@ -21,6 +23,7 @@ function Clock() {
     }
 
     const stop = () => {
+        setCountIsStarted(false)
         clearTimeout(timerId)
         // поставить часы на паузу, обнулить ид таймера (timerId <- undefined)
     }
@@ -34,9 +37,9 @@ function Clock() {
         // спрятать дату если мышка не наведена
     }
 
-    const stringTime = date && date.toLocaleTimeString() || <br/>
+    const stringTime = date && date.toLocaleTimeString('ru-Ru') || <br/>
     // часы24:минуты:секунды (01:02:03)/(23:02:03)/(24:00:00)/(00:00:01)
-    const stringDate = date && date.toLocaleDateString() || <br/>
+    const stringDate = date && date.toLocaleDateString('ru-Ru') || <br/>
     // день.месяц.год (01.02.2022) // варианты 01.02.0123/01.02.-123/01.02.12345 не рассматриваем
 
     // день недели на английском, месяц на английском (https://learn.javascript.ru/intl#intl-datetimeformat)
@@ -75,14 +78,14 @@ function Clock() {
             <div className={s.buttonsContainer}>
                 <SuperButton
                     id={'hw9-button-start'}
-                    disabled={!!timerId} // задизэйблить если таймер запущен
+                    disabled={countIsStarted} // задизэйблить если таймер запущен
                     onClick={start}
                 >
                     start
                 </SuperButton>
                 <SuperButton
                     id={'hw9-button-stop'}
-                    disabled={!timerId} // задизэйблить если таймер не запущен
+                    disabled={!countIsStarted} // задизэйблить если таймер не запущен
                     onClick={stop}
                 >
                     stop
