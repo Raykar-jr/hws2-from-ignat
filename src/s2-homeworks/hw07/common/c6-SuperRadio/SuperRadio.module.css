@@ -39,3 +39,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.span {
+    padding: 10px;
+}
