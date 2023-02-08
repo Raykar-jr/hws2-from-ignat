@@ -1,7 +1,13 @@
 .buttonsContainer {
+    display: flex;
+    gap: 10px;
 }
 
 .responseContainer {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .imageContainer {
@@ -10,13 +16,35 @@
 .image {
 }
 
-.textContainer{
+.textContainer {
 }
 
 .code {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+
+    color: #000000;
 }
 
 .text {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #000000;
 }
+
 .info {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #000000;
 }
