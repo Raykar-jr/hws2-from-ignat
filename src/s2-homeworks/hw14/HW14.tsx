@@ -34,25 +34,27 @@ const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                // делает студент
-
+                // @ts-ignore
+                setTechs(res.data.techs)
                 // сохранить пришедшие данные
-
-                //
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }
 
     const onChangeText = (value: string) => {
         setFind(value)
-        // делает студент
 
         // добавить/заменить значение в квери урла
+        setSearchParams(value)
         // setSearchParams(
 
         //
     }
 
     useEffect(() => {
+        debugger
         const params = Object.fromEntries(searchParams)
         sendQuery(params.find || '')
         setFind(params.find || '')
@@ -68,7 +70,7 @@ const HW14 = () => {
         <div id={'hw14'}>
             <div className={s2.hwTitle}>Homework #14</div>
 
-            <div className={s2.hw}>
+            <div className={s2.hw} style={{marginLeft: '30px'}}>
                 <SuperDebouncedInput
                     id={'hw14-super-debounced-input'}
                     value={find}
