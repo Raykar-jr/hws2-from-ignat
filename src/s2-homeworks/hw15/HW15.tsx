@@ -63,7 +63,6 @@ const HW15 = () => {
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        debugger
         setPage(newPage)
         setCount(newCount)
         sendQuery({page: newPage, count: newCount})
@@ -78,11 +77,11 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
-
         setSort(newSort)
         setPage(1)
         // при сортировке сбрасывать на 1 страницу
         sendQuery(newSort)
+
         // sendQuery(
         // setSearchParams(
     }
@@ -94,7 +93,21 @@ const HW15 = () => {
         setCount(+params.count || 4)
     }, [])
 
-    const mappedTechs = techs.map(t => (
+    let stateCopyWithFilter = techs.map(u => ({...u}))
+    if (sort === '0tech') {
+        stateCopyWithFilter.sort((a, b) => a.tech.localeCompare(b.tech))
+    }
+    else if (sort === '1tech') {
+        stateCopyWithFilter.sort((a, b) => a.tech.localeCompare(b.tech)).reverse()
+    }
+    else if (sort === '0developer') {
+        stateCopyWithFilter.sort((a, b) => a.developer.localeCompare(b.developer))
+    }
+    else if (sort === '1developer') {
+        stateCopyWithFilter.sort((a, b) => a.developer.localeCompare(b.developer)).reverse()
+    }
+
+    const mappedTechs = stateCopyWithFilter.map(t => (
         <div key={t.id} className={s.row}>
             <div id={'hw15-tech-' + t.id} className={s.tech}>
                 {t.tech}
@@ -106,40 +119,41 @@ const HW15 = () => {
         </div>
     ))
 
-    return (
-        <div id={'hw15'}>
-            <div className={s2.hwTitle}>Homework #15</div>
 
-            <div className={s2.hw} style={{marginLeft: '30px', marginBottom: '30px'}}>
-                {isLoading
-                    ? <div id={'hw15-loading'} className={s.loader}></div>
-                    : <div>
-                        <SuperPagination
-                            page={page}
-                            itemsCountForPage={count}
-                            totalCount={totalCount}
-                            onChange={onChangePagination}
-                        />
+        return (
+            <div id={'hw15'}>
+                <div className={s2.hwTitle}>Homework #15</div>
 
-                        <div className={s.rowHeader}>
-                            <div className={s.techHeader}>
-                                tech
-                                <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                <div className={s2.hw} style={{marginLeft: '30px', marginBottom: '30px'}}>
+                    {isLoading
+                        ? <div id={'hw15-loading'} className={s.loader}></div>
+                        : <div>
+                            <SuperPagination
+                                page={page}
+                                itemsCountForPage={count}
+                                totalCount={totalCount}
+                                onChange={onChangePagination}
+                            />
+
+                            <div className={s.rowHeader}>
+                                <div className={s.techHeader}>
+                                    tech
+                                    <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                                </div>
+
+                                <div className={s.developerHeader}>
+                                    developer
+                                    <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                                </div>
                             </div>
 
-                            <div className={s.developerHeader}>
-                                developer
-                                <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                            </div>
+                            {mappedTechs}
                         </div>
+                    }
 
-                        {mappedTechs}
-                    </div>
-                }
-
+                </div>
             </div>
-        </div>
-    )
+        )
 }
 
 export default HW15
