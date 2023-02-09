@@ -42,7 +42,7 @@ const HW15 = () => {
     const [sort, setSort] = useState('')
     const [page, setPage] = useState(1)
     const [count, setCount] = useState(4)
-    const [idLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(false)
     const [totalCount, setTotalCount] = useState(100)
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<TechType[]>([])
@@ -51,20 +51,26 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                // делает студент
-
+                // @ts-ignore
+                setTechs(res.data.techs)
+                // @ts-ignore
+                setTotalCount(res.data.totalCount)
                 // сохранить пришедшие данные
-
-                //
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        // делает студент
+        debugger
+        setPage(newPage)
+        setCount(newCount)
+        sendQuery({page: newPage, count: newCount})
+        // setSearchParams()
 
         // setPage(
         // setCount(
-
         // sendQuery(
         // setSearchParams(
 
@@ -72,15 +78,13 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
-        // делает студент
 
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
-
+        setSort(newSort)
+        setPage(1)
+        // при сортировке сбрасывать на 1 страницу
+        sendQuery(newSort)
         // sendQuery(
         // setSearchParams(
-
-        //
     }
 
     useEffect(() => {
@@ -106,29 +110,33 @@ const HW15 = () => {
         <div id={'hw15'}>
             <div className={s2.hwTitle}>Homework #15</div>
 
-            <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+            <div className={s2.hw} style={{marginLeft: '30px', marginBottom: '30px'}}>
+                {isLoading
+                    ? <div id={'hw15-loading'} className={s.loader}></div>
+                    : <div>
+                        <SuperPagination
+                            page={page}
+                            itemsCountForPage={count}
+                            totalCount={totalCount}
+                            onChange={onChangePagination}
+                        />
 
-                <SuperPagination
-                    page={page}
-                    itemsCountForPage={count}
-                    totalCount={totalCount}
-                    onChange={onChangePagination}
-                />
+                        <div className={s.rowHeader}>
+                            <div className={s.techHeader}>
+                                tech
+                                <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                            </div>
 
-                <div className={s.rowHeader}>
-                    <div className={s.techHeader}>
-                        tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                            <div className={s.developerHeader}>
+                                developer
+                                <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                            </div>
+                        </div>
+
+                        {mappedTechs}
                     </div>
+                }
 
-                    <div className={s.developerHeader}>
-                        developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                    </div>
-                </div>
-
-                {mappedTechs}
             </div>
         </div>
     )

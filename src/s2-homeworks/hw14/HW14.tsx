@@ -48,13 +48,10 @@ const HW14 = () => {
 
         // добавить/заменить значение в квери урла
         setSearchParams(value)
-        // setSearchParams(
-
-        //
+        // setSearchParams()
     }
 
     useEffect(() => {
-        debugger
         const params = Object.fromEntries(searchParams)
         sendQuery(params.find || '')
         setFind(params.find || '')
