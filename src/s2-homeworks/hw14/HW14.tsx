@@ -34,8 +34,9 @@ const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                // @ts-ignore
-                setTechs(res.data.techs)
+               if (res) {
+                   setTechs(res.data.techs)
+               }
                 // сохранить пришедшие данные
             })
             .finally(() => {
@@ -47,14 +48,14 @@ const HW14 = () => {
         setFind(value)
 
         // добавить/заменить значение в квери урла
-        setSearchParams(value)
-        // setSearchParams()
+        setSearchParams({value})
+
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery(params.find || '')
-        setFind(params.find || '')
+        sendQuery(params.value || '')
+        setFind(params.value || '')
     }, [])
 
     const mappedTechs = techs.map(t => (
@@ -81,6 +82,7 @@ const HW14 = () => {
 
                 {mappedTechs}
             </div>
+
         </div>
     )
 }
