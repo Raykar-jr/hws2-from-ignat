@@ -65,35 +65,42 @@ const HW15 = () => {
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        setPage(newPage)
+        /*setPage(newPage)
         setCount(newCount)
 
         const pageQ: { page?: string } = newPage !== 1 ? {page: newPage + ""} : {}
-        const countQ: { count?: string } = newCount !== 4 ? {count: newCount + ""} : {}
+        const countQ: { count?: string } = newCount !== 4 ? {count: newCount + ""} : {count: count + ''}
         const params = Object.fromEntries(searchParams)
         const allQuery = {...params, ...pageQ, ...countQ}
 
         setSearchParams(allQuery)
-        sendQuery(allQuery)
+        sendQuery(allQuery)*/
+        setPage(newPage)
+        newCount && setCount(newCount)
+
+        sendQuery({page: newPage, count: newCount || count})
+        setSearchParams({page: newPage.toString(), count: newCount?.toString() || count.toString()})
     }
 
     const onChangeSort = (newSort: string) => {
         setSort(newSort)
         setPage(1)
         // при сортировке сбрасывать на 1 страницу
-        const sortQ: {sort?: string} = newSort !== '' ? {sort: newSort} : {}
+      /*  const sortQ: {sort?: string} = newSort !== '' ? {sort: newSort} : {}
         const params = Object.fromEntries(searchParams)
         const allQuery = {...params, ...sortQ}
 
         sendQuery(allQuery)
-        setSearchParams(allQuery)
+        setSearchParams(allQuery)*/
+        sendQuery({page: 1, count: count, sort: newSort})
+        setSearchParams({page: '1', count: count.toString(), sort: newSort})
 
 
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: +params.page, count: +params.count, sort: params.sort})
+        sendQuery({page: params.page, count: params.count})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
     }, [])
