@@ -65,7 +65,6 @@ const HW15 = () => {
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
-        debugger
         setPage(newPage)
         setCount(newCount)
 
@@ -94,7 +93,7 @@ const HW15 = () => {
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: params.page, count: params.count})
+        sendQuery({page: +params.page, count: +params.count, sort: params.sort})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
     }, [])
