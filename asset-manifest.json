@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hws2-from-ignat/static/css/main.239fb29f.css",
-    "main.js": "/hws2-from-ignat/static/js/main.478f8b50.js",
+    "main.js": "/hws2-from-ignat/static/js/main.b0a68f0c.js",
     "static/js/238.9e64ea50.chunk.js": "/hws2-from-ignat/static/js/238.9e64ea50.chunk.js",
     "static/js/787.66cb4309.chunk.js": "/hws2-from-ignat/static/js/787.66cb4309.chunk.js",
     "static/js/711.0755f4c4.chunk.js": "/hws2-from-ignat/static/js/711.0755f4c4.chunk.js",
@@ -17,13 +17,13 @@
     "index.html": "/hws2-from-ignat/index.html",
     "static/media/burger.svg": "/hws2-from-ignat/static/media/burger.700e416f7bfe3697f96b36c778d25355.svg",
     "main.239fb29f.css.map": "/hws2-from-ignat/static/css/main.239fb29f.css.map",
-    "main.478f8b50.js.map": "/hws2-from-ignat/static/js/main.478f8b50.js.map",
+    "main.b0a68f0c.js.map": "/hws2-from-ignat/static/js/main.b0a68f0c.js.map",
     "238.9e64ea50.chunk.js.map": "/hws2-from-ignat/static/js/238.9e64ea50.chunk.js.map",
     "787.66cb4309.chunk.js.map": "/hws2-from-ignat/static/js/787.66cb4309.chunk.js.map",
     "711.0755f4c4.chunk.js.map": "/hws2-from-ignat/static/js/711.0755f4c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.239fb29f.css",
-    "static/js/main.478f8b50.js"
+    "static/js/main.b0a68f0c.js"
   ]
 }
